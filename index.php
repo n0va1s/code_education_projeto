@@ -7,6 +7,8 @@
 
 <?php require_once "assets/menu.php" ?>
 
+<?php require_once "assets/empresa.php" ?>
+
 <div id="produto" class="container-fluid text-center bg-grey">
   <h2>Produtos</h2><br>
   <h4>O que oferecemos</h4>
