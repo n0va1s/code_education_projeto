@@ -2,5 +2,5 @@
   <a href="#inicio" title="Início">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
-  <p>Dia Feliz - <?php echo date("Y")?></p>		
+  <p>Oh Happy Day - <?php echo date("Y")?></p>		
 </footer>
