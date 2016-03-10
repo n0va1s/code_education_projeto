@@ -1,11 +1,18 @@
 <div class="jumbotron text-center">
+  <!--
+  <form class="form-inline text-right" id="frmSearch" method="post" action="src/ConteudoController.php">
+    <input type="search" results  ="10" class="form-control" size="50" placeholder="O que procura?">
+    <button class="btn btn-primary pull-right" type="submit" id="btnSearch" name="btnSearch"><span class="glyphicon glyphicon-search"></span></button>
+  </form>
+  -->
+  <?php
+  require_once "./src/ConteudoView.php";
+  $view = new ConteudoView();
+  echo $view->exibirPesquisa();
+  ?>
   <h1>Oh Happy Day (day care)</h1>
   <p>O que queremos para os nossos filhos, queremos também para o seu!</p>
-  <div class="col-md-12">
-    <input type="search" results="10" class="form-control" size="50" placeholder="O que vc procura?">
-  </div>
 </div>
-
 <div id="empresa" class="container-fluid">
   <div class="row">
     <div class="col-md-8">

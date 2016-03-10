@@ -28,10 +28,22 @@ seq_cliente INT(6) AUTO_INCREMENT
 ,tip_parentesco CHAR(1) COMMENT 'P - pai, M - mae, A - avo, T - tio, O - outro'
 ,nom_filho VARCHAR(50) COMMENT 'Nome do filho(a)'
 ,num_idade TINYINT COMMENT 'Idade do filho(a)'
-,dat_inativo DATE NOT NULL DEFAULT '0000-00-00'
+,dat_inativo DATE NOT NULL DEFAULT '0000-00-00' COMMENT 'Data em que o registro foi desativado'
 ,PRIMARY KEY(seq_cliente)
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 COMMENT = 'Relaciona os clientes da empresa';
+
+CREATE TABLE IF NOT EXISTS conteudo (
+  seq_conteudo INT(6) AUTO_INCREMENT
+  ,nom_pagina VARCHAR(50) NOT NULL COMMENT 'Nome da pagina a ser pesquisada'
+  ,txt_pagina TEXT NOT NULL COMMENT 'Conteudo da pagina a ser apresentado ou pesquisado'
+  ,dat_inativo DATE NOT NULL DEFAULT '0000-00-00' COMMENT 'Data em que o registro foi desativado'
+  ,PRIMARY KEY(seq_conteudo)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci
+COMMENT = 'Relaciona as paginas e seus conteudos';

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require_once "cabecalho.php" ?>
+<?php require_once __DIR__."/cabecalho.php" ?>
 
 <body id="inicio" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-<?php require_once "menu.php" ?>
+<?php require_once __DIR__."/menu.php" ?>
 
-<?php require_once "empresa.php" ?>
+<?php require_once __DIR__."/empresa.php" ?>
 
 <div id="contato" class="container-fluid bg-grey">
   <h2 class="text-center">Confira sua mensagem</h2>
@@ -17,7 +17,7 @@
           <p>Atendimento 24 horas. Fale com a gente.</p>
           <p><span class="glyphicon glyphicon-map-marker"></span> Brasília, DF</p>
           <p><span class="glyphicon glyphicon-phone"></span> (61) 8154-6988</p>
-          <p><span class="glyphicon glyphicon-envelope"></span> mensagem@happyday.me</p>	   
+          <p><span class="glyphicon glyphicon-envelope"></span> mensagem@happyday.me</p>
         </div>
         <div class="col-sm-7 slideanim">
           <div class="row">
@@ -34,13 +34,13 @@
             <div class="col-sm-12 form-group">
               <button class="btn btn-default pull-right" type="submit">Enviar</button>
             </div>
-          </div>	
+          </div>
         </div>
       </div>
-    </form>  
+    </form>
 </div>
 
-<?php require_once "rodape.php" ?>
+<?php require_once __DIR__."/rodape.php" ?>
 
 </body>
 </html>

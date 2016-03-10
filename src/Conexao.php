@@ -4,7 +4,6 @@ class Conexao {
 
     static $conn;
 
-
     static function conectar() {
       $config = include "Configuracao.php";
 

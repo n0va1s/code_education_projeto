@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require_once "/home/novais/public-html/code_education_projeto/assets/cabecalho.php" ?>
+<?php require_once __DIR__."/cabecalho.php" ?>
 
 <body id="inicio" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-<?php require_once "/home/novais/public-html/code_education_projeto/assets/menu.php" ?>
+<?php require_once __DIR__."/menu.php" ?>
 
-<?php require_once "/home/novais/public-html/code_education_projeto/assets/empresa.php" ?>
+<?php require_once __DIR__."/empresa.php" ?>
 
 <div id="produto" class="container-fluid text-center bg-grey">
   <h2>Produtos</h2><br>
@@ -15,21 +15,21 @@
   <div class="row text-center slideanim">
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="/home/novais/public-html/code_education_projeto/assets/img/paris.jpg" alt="Paris" width="400" height="300">
+        <img src="./assets/img/paris.jpg" alt="Paris" width="400" height="300">
         <p><strong>Acomodação</strong></p>
         <p>Conforto e segurança para o seu filhote em um lugar perto da sua casa ou do seu compromisso</p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="/home/novais/public-html/code_education_projeto/assets/img/newyork.jpg" alt="New York" width="400" height="300">
+        <img src="./assets/img/newyork.jpg" alt="New York" width="400" height="300">
         <p><strong>Recreação</strong></p>
         <p>Um dia diferente para o seu filho sair da rotina</p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="/home/novais/public-html/code_education_projeto/assets/img/sanfran.jpg" alt="San Francisco" width="400" height="300">
+        <img src="./assets/img/sanfran.jpg" alt="San Francisco" width="400" height="300">
         <p><strong>Home Care</strong></p>
         <p>Vamos até você</p>
       </div>
@@ -167,11 +167,11 @@
   </div>
 </div>
 
-<?php require_once "/home/novais/public-html/code_education_projeto/assets/contato.php" ?>
+<?php require_once __DIR__."/contato.php" ?>
 
-<?php require_once "/home/novais/public-html/code_education_projeto/assets/cliente.php" ?>
+<?php require_once __DIR__."/cliente.php" ?>
 
-<?php require_once "/home/novais/public-html/code_education_projeto/assets/rodape.php" ?>
+<?php require_once __DIR__."/rodape.php" ?>
 
 </body>
 </html>

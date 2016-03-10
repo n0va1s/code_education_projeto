@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require_once "cabecalho.php" ?>
+<?php require_once __DIR__."/cabecalho.php" ?>
 
 <body>
 <div id="erro" class="container-fluid bg-grey">
@@ -17,7 +17,7 @@
       <strong>Alguma coisa errada.</strong><br />A página procurada não existe. Tente novamente.<br /><br /><br />
     </div>
     <div class="thumbnail">
-      <img src="assets/img/erro.jpg" alt="Alguma coisa errada" width="300" height="100">
+      <img src="./assets/img/erro.jpg" alt="Alguma coisa errada" width="300" height="100">
     </div>
   </div>
 </div>

@@ -4,5 +4,6 @@ USE code_education;
 
 #DROP TABLE include_require;
 DROP TABLE cliente;
+DROP TABLE conteudo;
 
 DROP database code_education;

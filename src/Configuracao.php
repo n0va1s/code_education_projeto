@@ -4,10 +4,8 @@ return array(
 		'SGBD' => 'mysql',
 		'host' => 'localhost',
 	  'dbname' =>  'code_education',
-	  'user' => 'usrcodeeducation',
-	  'password' => 'codeeducationusr',
-		'charset' => 'utf8',
-		'user' => 'usrcodeeducation',
-		'password' => 'codeeducationusr',
+	  'user' => 'root',
+	  'password' => 'root',
+		'charset' => 'utf8'
 	)
 );
