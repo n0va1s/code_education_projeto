@@ -30,15 +30,18 @@ class ConteudoDAO {
 
     public function listar(ConteudoModel $model) {
       try {
-        $stmt = $this->conn->prepare("select *
+        $stmt = $this->conn->prepare("select nom_pagina, txt_pagina
                                         from conteudo
-                                      where nom_pagina like '%:nom_pagina%'
-                                         or txt_pagina like '%:txt_pagina%'");
-        $stmt->bindValue(":nom_pagina", $model->getNomPagina());
-        $stmt->bindValue(":txt_pagina", $model->getTxtPagina());
+                                      where nom_pagina like :nom_pagina
+                                         or txt_pagina like :txt_pagina");
+        $np = "%".$model->getNomPagina()."%";
+        $tp = "%".$model->getTxtPagina()."%";
+
+        $stmt->bindValue(":nom_pagina", $np, PDO::PARAM_STR);
+        $stmt->bindValue(":txt_pagina", $tp, PDO::PARAM_STR);
 
         //Debug
-        //var_dump($stmt->debugDumpParams());
+        //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
