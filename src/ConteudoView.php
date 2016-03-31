@@ -1,17 +1,20 @@
 <?php
 
-class ConteudoView
-{
-  private $registros;
+require_once "View.php";
 
-  public function setSearch($registros){
-    $this->registros = isset($registros) ? $registros : NULL;
-    $this->exibirPesquisa($registros);
+class ConteudoView extends View {
+
+  public function exibirPaginas($paginas = NULL){
+    if($paginas){
+      foreach($paginas as $i => $nomPagina){
+          echo '<li class="list-group-item"><a href=#'.$nomPagina.'>'.$nomPagina.'</a></li>';
+      }
+    }
   }
 
-  public function exibirPesquisa($registros){
-    if($registros){
-      foreach ($registros as $registro) {
+  public function exibirPesquisa($dados = NULL){
+    if($dados){
+      foreach ($dados as $registro) {
         foreach ($registro as $key => $value) {
           echo "Página: <a href=#'{$key}'> - ".$value."</a>.<br>";
         }
@@ -24,10 +27,4 @@ class ConteudoView
     }
 
   }
-
-  public function __destruct(){
-    $this->registros = NULL;
-  }
 }
-
-$obj = new ConteudoView();

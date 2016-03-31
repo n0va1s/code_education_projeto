@@ -15,12 +15,21 @@ class ConteudoController{
   public function pesquisar(){
     $this->model->setNomPagina(isset($_POST["search"]) ? $_POST["search"] : "");
     $this->model->setTxtPagina(isset($_POST["search"]) ? $_POST["search"] : "");
-    $registros = $this->model->listar($this->model);
+    $conteudos = $this->model->listar($this->model);
 
-    if(isset($registros)){
-      $this->view->setSearch($registros);
+    if(isset($conteudos)){
+      $this->view->setDados($conteudos);
     } else {
       echo "Ops... nenhum resultado compatível com a pesquisa";
+    }
+  }
+
+  public function listarPaginas(){
+    $paginas = $this->model->listarPaginas();
+    if(isset($paginas)){
+      $this->view->exibirPaginas($paginas);
+    } else {
+      echo "Ops... nenhum pagina para apresentar";
     }
   }
 
@@ -30,4 +39,3 @@ class ConteudoController{
 }
 
 $obj = new ConteudoController();
-$obj->pesquisar();

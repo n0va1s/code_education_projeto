@@ -8,8 +8,12 @@ class ClienteController{
   private $model;
 
   public function __construct(){
-    $this->model = new ClienteModel();
-    $this->view = new View();
+    if($_SESSION['logado'] == 1){
+       $this->model = new ClienteModel();
+       $this->view = new View();  
+    } else {
+       throw new Exception("Faça login para acessar esta funcionalidade", 1);
+    }
   }
 
   public function gravar(){

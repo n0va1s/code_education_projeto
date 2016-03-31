@@ -57,7 +57,11 @@ class ConteudoModel {
   }
 
   public function listar(ConteudoModel $model){
-    return $this->dao->listar($model  );
+    return $this->dao->listar($model);
+  }
+
+  public function listarPaginas(){
+    return $this->dao->listarPaginas();
   }
 
   public function __destruct(){

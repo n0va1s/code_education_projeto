@@ -1,6 +1,7 @@
 #insert into include_require('REQ','assets/inicio.php','assets/cabecalho.php');
 #insert into include_require('REQ','assets/erro.php','assets/cabecalho.php');
 
+#Conteudo
 insert into conteudo(nom_pagina, txt_pagina) values ('inicio','Oh Happy Day (day care)
 O que queremos para os nossos filhos, queremos também para o seu!');
 insert into conteudo(nom_pagina, txt_pagina) values ('empresa','A OH HAPPY DAY

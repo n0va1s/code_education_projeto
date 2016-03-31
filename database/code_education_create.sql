@@ -20,6 +20,18 @@ COLLATE = utf8_unicode_ci
 COMMENT = 'Relaciona os includes e requires necessarios ao funcionamento de uma pagina';
 */
 
+CREATE TABLE IF NOT EXISTS usuario (
+seq_usuario INT(6) AUTO_INCREMENT
+,nom_usuario VARCHAR(50) NOT NULL COMMENT 'Login do usuario'
+,val_senha VARCHAR(60) NOT NULL COMMENT 'Senha segura do usuario'
+,dat_inativo DATE NOT NULL DEFAULT '0000-00-00' COMMENT 'Data em que o registro foi desativado'
+,PRIMARY KEY(seq_usuario)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci
+COMMENT = 'Relaciona os usuarios com acesso a area restrita';
+
 CREATE TABLE IF NOT EXISTS cliente (
 seq_cliente INT(6) AUTO_INCREMENT
 ,tip_cliente CHAR(1) NOT NULL DEFAULT 'B' COMMENT 'B - bronze - ate 10 compras, P - prata - ate 20 compras, O - ouro - ate 30 comrpas, D - diamante - mais de 30 compras'

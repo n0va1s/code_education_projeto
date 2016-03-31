@@ -50,6 +50,20 @@ class ConteudoDAO {
       }
     }
 
+    public function listarPaginas() {
+      try {
+        $stmt = $this->conn->prepare("select distinct nom_pagina
+                                        from conteudo");
+        //Debug
+        //echo $stmt->debugDumpParams();
+        //var_dump($stmt->errorInfo());
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+      } catch (Exception $e) {
+        echo "Erro ao listar as paginas cadastradas. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
+      }
+    }
+
     function __destruct() {
         Conexao::desconectar();
     }

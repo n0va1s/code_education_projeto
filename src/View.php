@@ -1,7 +1,14 @@
 <?php
 
-class View
+Class View
 {
+
+  private $dados;
+
+  public function __construct(){
+
+  }
+
   public function exibir($pagina = NULL){
     if(!empty($pagina)){
       require_once "./assets/$pagina.php";
@@ -18,8 +25,12 @@ class View
     }
   }
 
-  public function setMensagem($mensagem) {
-    echo $mensagem;
+  public function setDados($dados) {
+    $this->dados = $dados;
+  }
+
+  public function __destruct(){
+    $this->dados = NULL;
   }
 
 }
