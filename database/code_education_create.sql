@@ -59,3 +59,15 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 COMMENT = 'Relaciona as paginas e seus conteudos';
+
+CREATE TABLE IF NOT EXISTS aluno (
+seq_aluno INT(6) AUTO_INCREMENT
+,nom_aluno VARCHAR(50) NOT NULL COMMENT 'Nome completo do aluno'
+,val_nota DECIMAL(3,2) NOT NULL COMMENT 'Nota final do aluno no curso da Code Education'
+,dat_inativo DATE NOT NULL DEFAULT '0000-00-00' COMMENT 'Data em que o registro foi desativado'
+,PRIMARY KEY(seq_aluno)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci
+COMMENT = 'Relaciona os alunos do curso da Code Education';

@@ -44,7 +44,7 @@ class ConteudoDAO {
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
       } catch (Exception $e) {
         echo "Erro ao listar os conteudos das paginas. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
       }
@@ -58,7 +58,7 @@ class ConteudoDAO {
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
       } catch (Exception $e) {
         echo "Erro ao listar as paginas cadastradas. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
       }

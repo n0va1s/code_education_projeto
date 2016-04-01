@@ -6,8 +6,8 @@ class ConteudoView extends View {
 
   public function exibirPaginas($paginas = NULL){
     if($paginas){
-      foreach($paginas as $i => $nomPagina){
-          echo '<li class="list-group-item"><a href=#'.$nomPagina.'>'.$nomPagina.'</a></li>';
+      foreach($paginas as $pagina){
+          echo '<li class="list-group-item"><a href=#'.$pagina->nom_pagina.'>'.$pagina->nom_pagina.'</a></li>';
       }
     }
   }
@@ -15,9 +15,7 @@ class ConteudoView extends View {
   public function exibirPesquisa($dados = NULL){
     if($dados){
       foreach ($dados as $registro) {
-        foreach ($registro as $key => $value) {
-          echo "Página: <a href=#'{$key}'> - ".$value."</a>.<br>";
-        }
+          echo "Página: <a href=#'$registro->nom_pagina'> - ".$registro->txt_pagina."</a>.<br>";
       }
     } else {
       return '<form class="form-inline text-right" id="frmSearch" method="post" action="src/ConteudoController.php">
@@ -25,6 +23,5 @@ class ConteudoView extends View {
                 <button class="btn btn-primary pull-right" type="submit" id="btnSearch" name="btnSearch"><span class="glyphicon glyphicon-search"></span></button>
              </form>';
     }
-
   }
 }

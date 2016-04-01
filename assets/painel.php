@@ -20,8 +20,8 @@
         </div>
         <div class="col-sm-4">
           <span class="glyphicon glyphicon-lock logo-small"></span>
-          <h4>Modulo 3</h4>
-          <p>...</p>
+          <h4><a href="../assets/aluno.php">Aluno</a></h4>
+          <p>Lista de alunos e alunos destaque</p>
         </div>
       </div>
       <br><br>

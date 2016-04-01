@@ -22,3 +22,25 @@ insert into conteudo(nom_pagina, txt_pagina) values ('preco','Fidelidade');
 insert into conteudo(nom_pagina, txt_pagina) values ('contato','Atendimento 24 horas. Fale com a gente.
  Brasília, DF (61) 8154-6988 mensagem@happyday.me');
 insert into conteudo(nom_pagina, txt_pagina) values ('cliente','cadastre-se parentesco');
+
+#Aluno
+insert into aluno(nom_aluno, val_nota) values ('Huguinho','7.5');
+insert into aluno(nom_aluno, val_nota) values ('Zezinho','8.3');
+insert into aluno(nom_aluno, val_nota) values ('Luizinho','8.1');
+insert into aluno(nom_aluno, val_nota) values ('Mônica','7.3');
+insert into aluno(nom_aluno, val_nota) values ('Magali','6.9');
+insert into aluno(nom_aluno, val_nota) values ('Cebolinha','9.1');
+insert into aluno(nom_aluno, val_nota) values ('Cascão','6.3');
+insert into aluno(nom_aluno, val_nota) values ('Bidu','2.5');
+insert into aluno(nom_aluno, val_nota) values ('Thor','9.3');
+insert into aluno(nom_aluno, val_nota) values ('Homem de Ferro','9.9');
+insert into aluno(nom_aluno, val_nota) values ('Loky','8.1');
+insert into aluno(nom_aluno, val_nota) values ('Hulk','9.2');
+insert into aluno(nom_aluno, val_nota) values ('Homem Aranha','7.8');
+insert into aluno(nom_aluno, val_nota) values ('Super Homem','8');
+insert into aluno(nom_aluno, val_nota) values ('Batman','9.7');
+insert into aluno(nom_aluno, val_nota) values ('Mulher Maravilha','9.8');
+insert into aluno(nom_aluno, val_nota) values ('Capitão América','9.9');
+insert into aluno(nom_aluno, val_nota) values ('Viúva Negra','8.6');
+insert into aluno(nom_aluno, val_nota) values ('Arqueiro','7.1');
+insert into aluno(nom_aluno, val_nota) values ('Professor Xavier','10'); 

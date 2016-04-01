@@ -18,7 +18,7 @@ class ConteudoController{
     $conteudos = $this->model->listar($this->model);
 
     if(isset($conteudos)){
-      $this->view->setDados($conteudos);
+      $this->view->exibirPesquisa($conteudos);
     } else {
       echo "Ops... nenhum resultado compatível com a pesquisa";
     }
