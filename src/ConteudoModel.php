@@ -47,13 +47,13 @@ class ConteudoModel {
     return $this->datInativo;
   }
 
-  public function gravar(){
-    // if(!empty($this->getSeqConteudo())){
-    //   //Alterar
-    // } else {
-    //   $this->dao->inserir($this);
-    // }
-    // return true;
+  public function gravar(ConteudoModel $model){
+    if(!empty($model->getSeqConteudo())){
+      $this->dao->alterar($model);
+    } else {
+       $this->dao->inserir($model);
+    }
+    return true;
   }
 
   public function listar(ConteudoModel $model){
@@ -62,6 +62,10 @@ class ConteudoModel {
 
   public function listarPaginas(){
     return $this->dao->listarPaginas();
+  }
+
+  public function consultarPorSequencial(ConteudoModel $model){
+    return $this->dao->consultarPorSequencial($model);
   }
 
   public function __destruct(){

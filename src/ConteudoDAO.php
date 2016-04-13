@@ -28,9 +28,28 @@ class ConteudoDAO {
        }
     }
 
-    public function listar(ConteudoModel $model) {
+    public function alterar(ConteudoModel $model) {
       try {
-        $stmt = $this->conn->prepare("select nom_pagina, txt_pagina
+        $stmt = $this->conn->prepare("update conteudo
+                                        set nom_pagina = :nom_pagina,
+                                            txt_pagina = :txt_pagina
+                                      where seq_conteudo = :seq_conteudo");
+
+        $stmt->bindValue(":nom_pagina", $model->getNomPagina());
+        $stmt->bindValue(":txt_pagina", $model->getTxtPagina());
+        $stmt->bindValue(":seq_conteudo", $model->getSeqConteudo());
+        //Debug
+        //echo $stmt->debugDumpParams();
+        //var_dump($stmt->errorInfo());
+        return $stmt->execute();
+       } catch (Exception $e) {
+         echo "Erro ao gravar o conteudo ".$e->getCode()." Mensagem: ".$e->getMessage();
+       }
+    }
+
+    public function consultarPorTexto(ConteudoModel $model) {
+      try {
+        $stmt = $this->conn->prepare("select *
                                         from conteudo
                                       where nom_pagina like :nom_pagina
                                          or txt_pagina like :txt_pagina");
@@ -46,14 +65,33 @@ class ConteudoDAO {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS);
       } catch (Exception $e) {
-        echo "Erro ao listar os conteudos das paginas. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
+        echo "Erro ao consultar as paginas pelos textos. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
+      }
+    }
+
+    public function consultarPorSequencial(ConteudoModel $model) {
+      try {
+        $stmt = $this->conn->prepare("select *
+                                        from conteudo
+                                      where seq_conteudo = :seq_conteudo");
+
+        $stmt->bindValue(":seq_conteudo", $model->getSeqConteudo(), PDO::PARAM_INT);
+
+        //Debug
+        //echo $stmt->debugDumpParams();
+        //var_dump($stmt->errorInfo());
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+      } catch (Exception $e) {
+        echo "Erro ao consultar pagina pelo sequencial. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
       }
     }
 
     public function listarPaginas() {
       try {
-        $stmt = $this->conn->prepare("select distinct nom_pagina
-                                        from conteudo");
+        $stmt = $this->conn->prepare("select seq_conteudo, nom_pagina
+                                        from conteudo
+                                      group by nom_pagina");
         //Debug
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());

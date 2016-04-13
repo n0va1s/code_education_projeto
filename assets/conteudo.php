@@ -16,19 +16,11 @@
           $contr->listarPaginas();
         ?>
       </ul>
-      <form id="frmConteudo" method="post" action="src/ConteudoController.php">
-        <div class="form-group">
-          <label for="pagina">Página:</label>
-          <input type="pagina" class="form-control" id="pagina">
-        </div>
-        <div class="form-group">
-          <label for="conteudo">Texto:</label>
-          <textarea class="form-control" rows="10" id="conteudo"></textarea>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary pull-right" type="submit">Salvar</button>
-        </div>
-      </form>
+      <?php
+        require_once "../src/ConteudoController.php";
+        $contr = new ConteudoController();
+        $contr->editar();
+      ?>
     </div>
   </body>
   <?php require_once __DIR__."/rodape.php" ?>
