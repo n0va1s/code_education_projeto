@@ -10,17 +10,17 @@
       <div class="row">
         <div class="col-sm-4">
           <span class="glyphicon glyphicon-user logo-small"></span>
-          <h4><a href="../assets/cliente.php">Cliente</a></h4>
+          <h4><a href="../cliente/iniciar">Cliente</a></h4>
           <p>Dados pessoais dos nossos clientes</p>
         </div>
         <div class="col-sm-4">
           <span class="glyphicon glyphicon-wrench logo-small"></span>
-          <h4><a href="../assets/conteudo.php">Conteúdo</a></h4>
+          <h4><a href="../conteudo/iniciar">Conteúdo</a></h4>
           <p>Atualizar os textos do site</p>
         </div>
         <div class="col-sm-4">
           <span class="glyphicon glyphicon-lock logo-small"></span>
-          <h4><a href="../assets/aluno.php">Aluno</a></h4>
+          <h4><a href="../aluno/iniciar">Aluno</a></h4>
           <p>Lista de alunos e alunos destaque</p>
         </div>
       </div>

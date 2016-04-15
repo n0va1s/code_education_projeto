@@ -3,11 +3,11 @@
 Class Controller
 {
 
-  public function __construct(){
+  public function __construct(){}
 
+  public function view($pagina){
+    require_once "./assets/$pagina.php";
   }
 
-  protected function view($nome){
-    require_once 'assets/'.$nome.'php';
-  }
+  public function __destruct(){}
 }

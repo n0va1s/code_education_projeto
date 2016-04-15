@@ -63,35 +63,37 @@
 
 $url = parse_url("http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
 $separator = explode('/',$url['path']);
-$modulo = ucfirst($separator[1]);
-//Caso na URL so exista o modulo direcionar para index
-$acao = isset($separator[2]) ? $separator[2] : 'index';
-
-$menu = array("inicio","mensagem","obrigado","erro","aluno","cliente",
-              "conteudo","login","lougout","mensagem","painel");
+if(!empty(ucfirst($separator[1]))){
+  //Determinar o modulo a ser executado. Nao sendo informado, direciona para a pagina principal
+  $modulo = ucfirst($separator[1]);
+  //Caso na URL so exista o modulo direcionar para action index
+  $acao = isset($separator[2])?$separator[2]:"iniciar";
+  //Caso seja informado o ID para pesquisa ou alteracao
+  $id = isset($separator[3])?$separator[3]:NULL;
+} else {
+  $modulo = "Inicio";
+}
+//Lista de opcoes possivel no menu
+$menu = array("Inicio","Mensagem","Aluno","Cliente","Conteudo","Painel");
 if(!in_array($modulo, $menu)){
   http_response_code(404);
 }
-if (!file_exists("src/'.$modulo.'Controller.php")) {
+if (!file_exists(__DIR__."/src/".$modulo."Controller.php")) {
   http_response_code(501);
 }
 
+//Require
 require_once 'src/Controller.php';
 require_once 'src/Configuracao.php';
 require_once 'src/'.$modulo.'Controller.php';
-require_once 'src/'.$modulo.'Model.php';
-require_once 'src/'.$modulo.'View.php';
-require_once 'src/'.$modulo.'DAO.php';
 
-//Todas as controladoras tem o padrao src/ModuloController.php
-$m = $modulo.'Model()';
-$v = $modulo.'View()';
-$c = $modulo.'Controller()';
-$d = $modulo.'DAO()';
-
-//Instanciar as classes
-$mod = new $m;
+//Instanciacao das classes
+$c = $modulo.'Controller';
 $ctr = new $c;
-$viw = new $v;
-$dao = new $d;
-$ctr->$acao();
+
+//Como todas a requisicoes sao direcionadas para index.php os dados da
+//requisicao precisam ser encaminhados para o metodo especifico da controladora
+$dados = !empty($id) ? $id : $_REQUEST;
+
+//Execucao
+$ctr->$acao($dados);

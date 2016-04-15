@@ -3,34 +3,23 @@
 Class View
 {
 
-  private $dados;
-
-  public function __construct(){
-
+  public function render($pagina) {
+    require_once "./assets/".$pagina.".php";
   }
 
-  public function exibir($pagina = NULL){
-    if(!empty($pagina)){
-      require_once "./assets/$pagina.php";
+  public function exibirSucesso($mensagem = NULL){
+    if(isset($mensagem)){
+      echo $mensagem;
     } else {
-      require_once "./assets/default.php";
+      echo '<span>Opa! Dados cadastrados.</span>';
     }
   }
 
-  public function encaminhar($pagina = NULL){
-    if(!empty($pagina)){
-      require_once "../assets/$pagina.php";
+  public function exibirErro($mensagem = NULL){
+    if($mensagem){
+      echo $mensagem;
     } else {
-      require_once "../assets/default.php";
+      echo '<span>Hum... alguma coisa errada. Por favor tente novamente.</span>';
     }
   }
-
-  public function setDados($dados) {
-    $this->dados = $dados;
-  }
-
-  public function __destruct(){
-    $this->dados = NULL;
-  }
-
 }

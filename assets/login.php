@@ -2,7 +2,7 @@
 if(isset($_SESSION['logado']) == 0){
 ?>
 <div id="login" class="container-fluid">
-  <form class="form-inline text-center" name="frmLogin" action="/src/UsuarioController.php" method="POST">
+  <form class="form-inline text-center" name="frmLogin" action="../usuario/logar" method="POST">
     <h3>Acesse a área restrita</h3>
     <input type="text" class="form-control" size="30" placeholder="Login" id="login" name="login" required>
     <input type="password" class="form-control" size="30" placeholder="Senha" id="senha" name="senha" required>

@@ -2,15 +2,7 @@
 
 require_once "View.php";
 
-class ConteudoView extends View {
-
-  public function exibirMenu($dados = NULL){
-    if($dados){
-      foreach($dados as $pagina){
-          echo '<li class="list-group-item"><a href=../index.php?modulo=conteudo&id='.$pagina->seq_conteudo.'>'.$pagina->nom_pagina.'</a></li>';
-      }
-    }
-  }
+class ConteudoView extends View{
 
   public function exibirPesquisa($dados = NULL){
     if($dados){
@@ -25,45 +17,80 @@ class ConteudoView extends View {
     }
   }
 
-  public function exibirFormulario($dados = NULL){
-    if($dados){
-      return '<form id="frmConteudo" method="post" action="index.php">
-        <div class="form-group">
-          <label for="titulo">Página:</label>
-          <input type="titulo" class="form-control" id="titulo" value='.$dados->tit_conteudo.'>
-        </div>
-        <div class="form-group">
-          <label for="conteudo">Texto:</label>
-          <textarea class="form-control" rows="10" id="conteudo">'.$dados->txt_conteudo.'</textarea>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary pull-right" type="submit">Salvar</button>
-        </div>
-        <input type="hidden" id="sequencial" value='.$dados->seq_conteudo.'>
-      </form>';
-    } else {
-      return '<form id="frmConteudo" method="post" action="index.php">
-        <div class="form-group">
-          <label for="titulo">Página:</label>
-          <input type="titulo" class="form-control" id="titulo">
-        </div>
-        <div class="form-group">
-          <label for="conteudo">Texto:</label>
-          <textarea class="form-control" rows="10" id="conteudo"></textarea>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary pull-right" type="submit">Salvar</button>
-        </div>
-        <input type="hidden" id="sequencial">
-      </form>';
+  public function exibirFormularioAlteracao($dados = NULL){
+
+      $html = '<!DOCTYPE html>
+      <html lang="en">
+        <?php
+          require_once "../assets/cabecalho.php";
+          require_once "../assets/menu.php";
+        ?>
+        <body>
+          <div id="conteudo" class="container-fluid">
+            <h2 class="text-center">Conteúdo</h2>
+            <form id="frmConteudo" method="POST" action="../salvar">
+              <div class="form-group">
+                <label for="titulo">Página:</label>
+                <input type="titulo" class="form-control" id="titulo" value="'.$dados->nom_pagina.'">
+              </div>
+              <div class="form-group">
+                <label for="conteudo">Texto:</label>
+                <textarea class="form-control" rows="10" id="conteudo">'.$dados->txt_pagina.'</textarea>
+              </div>
+              <div class="form-group">
+                <input class="btn btn-primary pull-right" type="submit" id="btnSalvar" value="Salvar">
+              </div>
+              <input type="hidden" id="sequencial" value='.$dados->seq_conteudo.'>
+            </form>
+          </div>
+        </body>
+        <?php require_once "../assets/rodape.php" ?>
+      </html>';
+
+      echo $html;
+  }
+
+  public function exibirFormularioInclusao($dados = NULL){
+    $opcoes = NULL;
+    foreach ($dados as $pagina){
+      $opcoes = '<li class="list-group-item"><a href=../conteudo/editar/'.$pagina->seq_conteudo.'>'.$pagina->nom_pagina.'</a></li>'.$opcoes;
     }
+
+    $html = '<!DOCTYPE html>
+     <html lang="en">
+     <?php require_once "../assets/cabecalho.php"?>
+     <?php require_once "../assets/menu.php"?>
+        <body>
+         <div id="conteudo" class="container-fluid">
+           <h2 class="text-center">Conteúdo</h2>
+           <ul class="list-inline">'.$opcoes.'</ul>
+           <form id="frmConteudo" method="post" action="index.php">
+             <div class="form-group">
+               <label for="titulo">Página:</label>
+               <input type="titulo" class="form-control" id="titulo">
+             </div>
+             <div class="form-group">
+               <label for="conteudo">Texto:</label>
+               <textarea class="form-control" rows="10" id="conteudo"></textarea>
+             </div>
+             <div class="form-group">
+               <input class="btn btn-primary pull-right" type="submit" id="btnSalvar" value="Salvar">
+             </div>
+             <input type="hidden" id="sequencial">
+           </form>
+         </div>
+       </body>
+       <?php require_once "../assets/rodape.php" ?>
+     </html>';
+
+    echo $html;
   }
 
   public function exibirSucesso($mensagem = NULL){
-    if($mensagem){
+    if(isset($mensagem)){
       echo $mensagem;
     } else {
-      return '<span>Conteúdo cadastrados com sucesso!</span>';
+      echo '<span>Conteúdo cadastrado com sucesso!</span>';
     }
   }
 
@@ -71,7 +98,7 @@ class ConteudoView extends View {
     if($mensagem){
       echo $mensagem;
     } else {
-      return '<span>Erro no cadastro do conteúdo!</span>';
+      echo '<span>Erro no cadastro do conteúdo!</span>';
     }
   }
 }
