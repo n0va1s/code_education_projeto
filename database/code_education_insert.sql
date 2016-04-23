@@ -1,6 +1,9 @@
 #insert into include_require('REQ','assets/inicio.php','assets/cabecalho.php');
 #insert into include_require('REQ','assets/erro.php','assets/cabecalho.php');
 
+#Usuario
+insert into usuario (nom_usuario, val_senha) values ('admin','$2y$10$ywbxcXOYO6KkMWu5PXrsB..kPdUKi5KbcrXmbKImZneDgtBZDJxUW');
+
 #Conteudo
 insert into conteudo(nom_pagina, txt_pagina) values ('inicio','Oh Happy Day (day care)
 O que queremos para os nossos filhos, queremos também para o seu!');
@@ -24,23 +27,23 @@ insert into conteudo(nom_pagina, txt_pagina) values ('contato','Atendimento 24 h
 insert into conteudo(nom_pagina, txt_pagina) values ('cliente','cadastre-se parentesco');
 
 #Aluno
-insert into aluno(nom_aluno, val_nota) values ('Huguinho','7.5');
-insert into aluno(nom_aluno, val_nota) values ('Zezinho','8.3');
-insert into aluno(nom_aluno, val_nota) values ('Luizinho','8.1');
-insert into aluno(nom_aluno, val_nota) values ('Mônica','7.3');
-insert into aluno(nom_aluno, val_nota) values ('Magali','6.9');
-insert into aluno(nom_aluno, val_nota) values ('Cebolinha','9.1');
-insert into aluno(nom_aluno, val_nota) values ('Cascão','6.3');
-insert into aluno(nom_aluno, val_nota) values ('Bidu','2.5');
-insert into aluno(nom_aluno, val_nota) values ('Thor','9.3');
-insert into aluno(nom_aluno, val_nota) values ('Homem de Ferro','9.9');
-insert into aluno(nom_aluno, val_nota) values ('Loky','8.1');
-insert into aluno(nom_aluno, val_nota) values ('Hulk','9.2');
-insert into aluno(nom_aluno, val_nota) values ('Homem Aranha','7.8');
-insert into aluno(nom_aluno, val_nota) values ('Super Homem','8');
-insert into aluno(nom_aluno, val_nota) values ('Batman','9.7');
-insert into aluno(nom_aluno, val_nota) values ('Mulher Maravilha','9.8');
-insert into aluno(nom_aluno, val_nota) values ('Capitão América','9.9');
-insert into aluno(nom_aluno, val_nota) values ('Viúva Negra','8.6');
-insert into aluno(nom_aluno, val_nota) values ('Arqueiro','7.1');
-insert into aluno(nom_aluno, val_nota) values ('Professor Xavier','10'); 
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Huguinho','PHP','7.5');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Zezinho','PHP','8.3');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Luizinho','PHP','8.1');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Mônica','PHP','7.3');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Magali','PHP','6.9');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Cebolinha','PHP','9.1');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Cascão','PHP','6.3');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Bidu','PHP','2.5');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Thor','PHP','9.3');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Homem de Ferro','PHP','9.9');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Loky','PHP','8.1');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Hulk','PHP','9.2');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Homem Aranha','PHP','7.8');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Super Homem','PHP','8');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Batman','PHP','9.7');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Mulher Maravilha','PHP','9.8');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Capitão América','PHP','9.9');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Viúva Negra','PHP','8.6');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Arqueiro','PHP','7.1');
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Professor Xavier','PHP','10'); 

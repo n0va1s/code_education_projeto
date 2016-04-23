@@ -6,6 +6,7 @@ class AlunoModel {
 
   private $seqAluno;
   private $nomAluno;
+  private $nomModulo;
   private $valNota;
   private $datInativo;
 
@@ -21,6 +22,10 @@ class AlunoModel {
 
   public function setNomAluno($nomAluno){
     $this->nomAluno = $nomAluno;
+  }
+
+  public function setNomModulo($nomModulo){
+    $this->nomModulo = $nomModulo;
   }
 
   public function setValNota($valNota){
@@ -39,6 +44,10 @@ class AlunoModel {
     return $this->nomAluno;
   }
 
+  public function getNomModulo(){
+    return $this->nomModulo;
+  }
+
   public function getValNota(){
     return $this->valNota;
   }
@@ -47,13 +56,21 @@ class AlunoModel {
     return $this->datInativo;
   }
 
-  public function gravar(){
-    // if(!empty($this->getSeqAluno())){
-    //   //Alterar
-    // } else {
-    //   $this->dao->inserir($this);
-    // }
-    // return true;
+  public function gravar(AlunoModel $model){
+    if(!empty($this->getSeqAluno())){
+      $this->dao->alterar($model);
+    } else {
+      $this->dao->inserir($model);
+    }
+    return true;
+  }
+
+  public function remover(AlunoModel $model){
+    return $this->dao->remover($model);
+  }
+  //Obtem os dados de um aluno especifico (id)
+  public function consultar(AlunoModel $model){
+    return $this->dao->consultar($model);
   }
 
   public function listar(){

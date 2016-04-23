@@ -58,8 +58,8 @@ class ConteudoView extends View{
 
     $html = '<!DOCTYPE html>
      <html lang="en">
-     <?php require_once "../assets/cabecalho.php"?>
-     <?php require_once "../assets/menu.php"?>
+     <?php require_once "../assets/cabecalho.php" ?>
+     <?php require_once "../assets/menu.php" ?>
         <body>
          <div id="conteudo" class="container-fluid">
            <h2 class="text-center">Conteúdo</h2>

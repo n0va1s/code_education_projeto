@@ -8,8 +8,8 @@ if(isset($_SESSION['logado']) == 0){
     <input type="password" class="form-control" size="30" placeholder="Senha" id="senha" name="senha" required>
     <button type="submit" class="btn btn-danger">Entrar</button>
     <br /><br />
-    <img src="../assets/img/google.png" class="img-thumbnail" width="200" height="200" alt="Utilize sua conta do Google para acessar"/>
-    <img src="../assets/img/facebook.png" class="img-thumbnail" width="200" height="200" alt="Utilize sua conta do Facebook para acessar"/>
+    <img src="../assets/img/google.png" class="img-thumbnail" width="100" height="100" alt="Utilize sua conta do Google para acessar"/>
+    <img src="../assets/img/facebook.png" class="img-thumbnail" width="100" height="100" alt="Utilize sua conta do Facebook para acessar"/>
   </form>
 </div>
 <?php

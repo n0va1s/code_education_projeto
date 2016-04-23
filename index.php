@@ -63,16 +63,28 @@
 
 $url = parse_url("http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
 $separator = explode('/',$url['path']);
+//Modulo
 if(!empty(ucfirst($separator[1]))){
   //Determinar o modulo a ser executado. Nao sendo informado, direciona para a pagina principal
   $modulo = ucfirst($separator[1]);
-  //Caso na URL so exista o modulo direcionar para action index
-  $acao = isset($separator[2])?$separator[2]:"iniciar";
-  //Caso seja informado o ID para pesquisa ou alteracao
-  $id = isset($separator[3])?$separator[3]:NULL;
 } else {
   $modulo = "Inicio";
 }
+//Acao
+if(!empty($separator[2])){
+  //Caso na URL so exista o modulo direcionar para action index
+  $acao = $separator[2];
+} else {
+  $acao = "iniciar";
+}
+//Id
+if(!empty($separator[3])) {
+  //Caso seja informado o ID para pesquisa ou alteracao
+  $id = $separator[3];
+} else {
+  $id = NULL;
+}
+
 //Lista de opcoes possivel no menu
 $menu = array("Inicio","Mensagem","Aluno","Cliente","Conteudo","Painel");
 if(!in_array($modulo, $menu)){

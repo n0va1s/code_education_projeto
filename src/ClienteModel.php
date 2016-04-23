@@ -67,10 +67,15 @@ class ClienteModel {
 
   public function gravar(){
     if(!empty($this->getSeqCliente())){
-      //Alterar
+      $this->dao->alterar($this);
     } else {
       $this->dao->inserir($this);
     }
+    return true;
+  }
+
+  public function excluir(){
+    $this->dao->excluir($this);
     return true;
   }
 

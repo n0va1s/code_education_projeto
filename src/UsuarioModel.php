@@ -8,7 +8,7 @@ class UsuarioModel {
   private $nomUsuario;
   private $valSenha;
   private $datInativo;
-  
+
   private $dao;
 
   public function __construct(){
@@ -55,16 +55,13 @@ class UsuarioModel {
   }
 
   public function autenticar($model){
-    if(!isset($_SESSION['logado']) or isset($_SESSION['logado']) == 0){
-
+    if(!isset($_SESSION['logado'])){
         $sucesso = $this->dao->validarCredenciais($model);
-   
+      session_start();
       if($sucesso){
-        echo "Login realizado com sucesso";
         $_SESSION['logado'] = 1;
         return true;
       } else {
-        echo "Ops... usuario ou senha invalidos. Tente novamente.";
         $_SESSION['logado'] = 0;
         return false;
       }
@@ -74,8 +71,8 @@ class UsuarioModel {
   public function autorizar($model){
 
     //$modulos = $this->dao->consultarFuncionalidades($model);
-    return "cliente"; 
-    
+    return "cliente";
+
   }
 
   public function listar(){

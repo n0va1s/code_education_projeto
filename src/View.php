@@ -7,6 +7,16 @@ Class View
     require_once "./assets/".$pagina.".php";
   }
 
+  
+  public function exibirNaoLogado($mensagem = NULL){
+    if(isset($mensagem)){
+      echo $mensagem;
+    } else {
+      echo "Faça login para acessar esta funcionalidade";
+    }
+  }
+
+
   public function exibirSucesso($mensagem = NULL){
     if(isset($mensagem)){
       echo $mensagem;
