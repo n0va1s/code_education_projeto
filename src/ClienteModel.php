@@ -7,9 +7,8 @@ class ClienteModel {
   private $seqCliente;
   private $nomCliente;
   private $emlCliente;
-  private $tipParentesco;
-  private $nomFilho;
-  private $numIdade;
+  private $numCPF;
+  private $desEndereco;
 
   private $dao;
 
@@ -29,16 +28,12 @@ class ClienteModel {
     $this->emlCliente = $emlCliente;
   }
 
-  public function setTipParentesco($tipParentesco){
-    $this->tipParentesco = $tipParentesco;
+  public function setNumCPF($numCPF){
+    $this->numCPF = $numCPF;
   }
 
-  public function setNomFilho($nomFilho){
-    $this->nomFilho = $nomFilho;
-  }
-
-  public function setNumIdade($numIdade){
-    $this->numIdade = $numIdade;
+  public function setDesEndereco($desEndereco){
+    $this->desEndereco = $desEndereco;
   }
 
   public function getSeqCliente(){
@@ -53,16 +48,12 @@ class ClienteModel {
     return $this->emlCliente;
   }
 
-  public function getTipParentesco(){
-    return $this->tipParentesco;
+  public function getNumCPF(){
+    return $this->numCPF;
   }
 
-  public function getNomFilho(){
-    return $this->nomFilho;
-  }
-
-  public function getNumIdade(){
-    return $this->numIdade;
+  public function getDesEndereco(){
+    return $this->desEndereco;
   }
 
   public function gravar(){
@@ -79,8 +70,8 @@ class ClienteModel {
     return true;
   }
 
-  public function listar(){
-    return $this->dao->listar();
+  public function listar($ordem = NULL){
+    return $this->dao->listar($ordem);
   }
 
   public function __destruct(){

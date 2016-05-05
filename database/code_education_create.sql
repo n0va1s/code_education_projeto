@@ -37,9 +37,8 @@ seq_cliente INT(6) AUTO_INCREMENT
 ,tip_cliente CHAR(1) NOT NULL DEFAULT 'B' COMMENT 'B - bronze - ate 10 compras, P - prata - ate 20 compras, O - ouro - ate 30 comrpas, D - diamante - mais de 30 compras'
 ,nom_cliente VARCHAR(50) COMMENT 'Nome do cliente'
 ,eml_cliente VARCHAR(50) COMMENT 'Email do cliente'
-,tip_parentesco CHAR(1) COMMENT 'P - pai, M - mae, A - avo, T - tio, O - outro'
-,nom_filho VARCHAR(50) COMMENT 'Nome do filho(a)'
-,num_idade TINYINT COMMENT 'Idade do filho(a)'
+,num_cpf CHAR(11) COMMENT 'Identificador unico do cliente'
+,des_endereco VARCHAR(80) COMMENT 'Endereco do responsavel pela crianca'
 ,dat_inativo DATE NOT NULL DEFAULT '0000-00-00' COMMENT 'Data em que o registro foi desativado'
 ,PRIMARY KEY(seq_cliente)
 )

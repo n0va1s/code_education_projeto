@@ -14,25 +14,22 @@ class ClienteDAO {
       try {
         $stmt = $this->conn->prepare("insert into cliente (nom_cliente,
                                                            eml_cliente,
-                                                           tip_parentesco,
-                                                           nom_filho,
-                                                           num_idade)
+                                                           num_cpf,
+                                                           des_endereco)
                                                    values (:nom_cliente,
                                                            :eml_cliente,
-                                                           :tip_parentesco,
-                                                           :nom_filho,
-                                                           :num_idade)");
+                                                           :num_cpf,
+                                                           :des_endereco)");
 
         $stmt->bindValue(":nom_cliente", $model->getNomCliente());
         $stmt->bindValue(":eml_cliente", $model->getEmlCliente());
-        $stmt->bindValue(":tip_parentesco", $model->getTipParentesco());
-        $stmt->bindValue(":nom_filho", $model->getNomFilho());
-        $stmt->bindValue(":num_idade", $model->getNumIdade());
+        $stmt->bindValue(":num_cpf", $model->getNumCPF());
+        $stmt->bindValue(":des_endereco", $model->getDesEndereco());
         //Debug
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
 
-        $result = $stmt->execute();
+        return $stmt->execute();
 
        } catch (Exception $e) {
          echo "Erro ao gravar o cliente ".$e->getCode()." Mensagem: ".$e->getMessage();
@@ -43,20 +40,20 @@ class ClienteDAO {
       try {
         $stmt = $this->conn->prepare("update cliente set nom_cliente = :nom_cliente,
                                                          eml_cliente = :eml_cliente,
-                                                         tip_parentesco = :tip_parentesco,
-                                                         nom_filho = :nom_filho,
-                                                         num_idade = :num_idade");
+                                                         num_cpf = :num_cpf,
+                                                         des_endereco = :des_endereco
+                                     where seq_cliente = :seq_cliente");
 
-        $stmt->bindValue(":nom_cliente", $model->getNomCliente());
-        $stmt->bindValue(":eml_cliente", $model->getEmlCliente());
-        $stmt->bindValue(":tip_parentesco", $model->getTipParentesco());
-        $stmt->bindValue(":nom_filho", $model->getNomFilho());
-        $stmt->bindValue(":num_idade", $model->getNumIdade());
+         $stmt->bindValue(":nom_cliente", $model->getNomCliente());
+         $stmt->bindValue(":eml_cliente", $model->getEmlCliente());
+         $stmt->bindValue(":tip_parentesco", $model->getNumCPF());
+         $stmt->bindValue(":nom_filho", $model->getDesEndereco());
+         $stmt->bindValue(":seq_cliente", $model->getSeqCliente());
         //Debug
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
 
-        $result = $stmt->execute();
+        return $stmt->execute();
 
        } catch (Exception $e) {
          echo "Erro ao atualizar o cliente ".$e->getCode()." Mensagem: ".$e->getMessage();
@@ -65,7 +62,7 @@ class ClienteDAO {
 
     public function excluir(ClienteModel $model) {
       try {
-        $stmt = $this->conn->prepare("delete from cliente 
+        $stmt = $this->conn->prepare("delete from cliente
                                       where seq_cliente = :seq_cliente");
 
         $stmt->bindValue(":seq_cliente", $model->getSeqCliente());
@@ -73,18 +70,19 @@ class ClienteDAO {
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
 
-        $result = $stmt->execute();
+        return $stmt->execute();
 
        } catch (Exception $e) {
          echo "Erro ao excluir o cliente ".$e->getCode()." Mensagem: ".$e->getMessage();
        }
     }
 
-    public function listar() {
+    public function listar($ordem = NULL) {
       try {
-        $this->stmt = $this->conn->prepare("select * from cliente");
+        $this->stmt = $this->conn->prepare("select * from cliente order by nom_cliente $ordem");
         $this->stmt->execute();
-        $result = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $this->stmt->fetchAll(PDO::FETCH_CLASS);
       } catch (Exception $e) {
         echo "Erro ao listar os clientes. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
       }

@@ -13,10 +13,12 @@ class ClienteController extends Controller{
     $this->view = new ClienteView();
   }
 
-  public function iniciar(){
+  public function iniciar($ordem = NULL){
     //if(isset($_SESSION['logado'])){
       //if($_SESSION['logado'] == 1){
         $this->view->exibirFormularioInclusao();
+        $dados = $this->model->listar($ordem);
+        $this->view->exibirClientes($dados);
       //} else {
       //  $this->view->exibirNaoLogado();
       //}
@@ -27,9 +29,8 @@ class ClienteController extends Controller{
     $this->model->setSeqCliente(isset($_POST["seq"]) ? $_POST["seq"] : "");
     $this->model->setNomCliente(isset($_POST["nome"]) ? $_POST["nome"] : "");
     $this->model->setEmlCliente(isset($_POST["email"]) ? $_POST["email"] : "");
-    $this->model->setTipParentesco(isset($_POST["telefone"]) ? $_POST["telefone"] : "");
-    $this->model->setNomFilho(isset($_POST["genero"]) ? $_POST["genero"] : "");
-    $this->model->setNumIdade(isset($_POST["parentesco"]) ? $_POST["parentesco"] : "");
+    $this->model->setNumCPF(isset($_POST["cpf"]) ? $_POST["cpf"] : "");
+    $this->model->setDesEndereco(isset($_POST["endereco"]) ? $_POST["endereco"] : "");
     $sucesso = $this->model->gravar($this->model);
 
     if($sucesso){
@@ -50,9 +51,9 @@ class ClienteController extends Controller{
     }
   }
 
-  public function listar(){
-    $dados = $this->model->listar();
-    $this->view->exibirLista($dados);
+  public function listar($ordem = NULL){
+    $dados = $this->model->listar($ordem);
+    $this->view->exibirClientes($dados);
   }
 
   public function __destruct(){

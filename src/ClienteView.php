@@ -4,6 +4,17 @@ require_once "View.php";
 
 class ClienteView extends View{
 
+  public function exibirClientes($dados = NULL){
+    if($dados){
+      echo '<span>Ordem: <a href="/cliente/iniciar/asc">crescente</a> - <a href="/cliente/iniciar/desc">decrescente</a></span>';
+      echo '<ul><b>Nossos clientes</b>';
+      foreach ($dados as $cliente) {
+          echo '<li class="list-group-item">'.$cliente->seq_cliente.' - '.$cliente->nom_cliente.' - '.$cliente->num_cpf.'</li>';
+      }
+      echo '</ul>';
+    }
+  }
+
   public function exibirFormularioAlteracao($dados = NULL){
 
     $html = '<!DOCTYPE html>
@@ -15,7 +26,7 @@ class ClienteView extends View{
                 <body>
                   <div id="cliente" class="container-fluid text-center">
                     <h2 class="text-center">Cadastre-se</h2>
-                    <form id="frmCadastro" method="post" action="../salvar">
+                    <form id="frmCadastro" method="post" action="./gravar">
                       <div class="form-inline">
                         <div class="row">
                           <div class="form-group">
@@ -27,21 +38,10 @@ class ClienteView extends View{
                         </div>
                         <div class="row">
                           <div class="form-group">
-                            <input class="form-control" size="12" id="telefone" name="telefone" placeholder="Celular" type="text" required value='.$dados->tel_cliente.'>
+                            <input class="form-control" size="12" id="cpf" name="cpf" placeholder="CPF" type="text" required value='.$dados->num_cpf.'>
                           </div>
                           <div class="form-group">
-                            <input class="form-control" id="sexo" name="sexo" placeholder="Genero" type="radio" required value='.$dados->ind_sexo.' $selected>
-                            <input class="form-control" id="sexo" name="sexo" placeholder="Genero" type="radio" required value='.$dados->ind_sexo.' $selected>
-                          </div>
-                          <div class="form-group">
-                            <select class="form-control" id="parentesco" name="parentesco">
-                              <option value="" $selected>Parentesco</option>
-                              <option value="P" $selected>Pai</option>
-                              <option value="M" $selected>Mãe</option>
-                              <option value="T" $selected>Tio(a)</option>
-                              <option value="A" $selected>Avô(ó)</option>
-                              <option value="I" $selected>Irmão(ã)</option>
-                            </select>
+                            <input class="form-control" size="50" id="endereco" name="endereco" placeholder="Endereço" type="text" required value='.$dados->des_endereco.'>
                           </div>
                           <div class="form-group">
                             <button class="btn btn-primary pull-right" type="submit">Salvar</button>
@@ -58,7 +58,7 @@ class ClienteView extends View{
   }
 
   public function exibirFormularioInclusao(){
-   
+
     $html = '<!DOCTYPE html>
               <html lang="en">
 
@@ -68,39 +68,28 @@ class ClienteView extends View{
                 <body>
                   <div id="cliente" class="container-fluid text-center">
                     <h2 class="text-center">Cadastre-se</h2>
-                    <form id="frmCadastro" method="post" action="../salvar">
-                      <div class="form-inline">
-                        <div class="row">
-                          <div class="form-group">
-                            <input class="form-control" size="70" id="nome" name="nome" placeholder="Nome" type="text" required>
-                          </div>
-                          <div class="form-group">
-                            <input class="form-control" size="50" id="email" name="email" placeholder="Email" type="email" required>
-                          </div>
+                    <form id="frmCadastro" method="post" action="./gravar">
+                    <div class="form-inline">
+                      <div class="row">
+                        <div class="form-group">
+                          <input class="form-control" size="70" id="nome" name="nome" placeholder="Nome" type="text" required>
                         </div>
-                        <div class="row">
-                          <div class="form-group">
-                            <input class="form-control" size="12" id="telefone" name="telefone" placeholder="Celular" type="text" required>
-                          </div>
-                          <div class="form-group">
-                            <input class="form-control" id="genero" name="genero" type="radio" required value="M">
-                            <input class="form-control" id="genero" name="genero" type="radio" required value="F">
-                          </div>
-                          <div class="form-group">
-                            <select class="form-control" id="parentesco" name="parentesco">
-                              <option value="">Parentesco</option>
-                              <option value="P">Pai</option>
-                              <option value="M">Mãe</option>
-                              <option value="T">Tio(a)</option>
-                              <option value="A">Avô(ó)</option>
-                              <option value="I">Irmão(ã)</option>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <button class="btn btn-primary pull-right" type="submit">Cadastrar</button>
-                          </div>
+                        <div class="form-group">
+                          <input class="form-control" size="50" id="email" name="email" placeholder="Email" type="email" required>
                         </div>
                       </div>
+                      <div class="row">
+                        <div class="form-group">
+                          <input class="form-control" size="12" id="cpf" name="cpf" placeholder="CPF" type="text" required>
+                        </div>
+                        <div class="form-group">
+                          <input class="form-control" size="50" id="endereco" name="endereco" placeholder="Endereço" type="text" required>
+                        </div>
+                        <div class="form-group">
+                          <button class="btn btn-primary pull-right" type="submit">Salvar</button>
+                        </div>
+                      </div>
+                    </div>
                     </form>
                   </div>
                 </body>
