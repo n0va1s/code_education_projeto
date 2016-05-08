@@ -12,6 +12,8 @@ class ClienteView extends View{
           echo '<li class="list-group-item">'.$cliente->seq_cliente.' - '.$cliente->nom_cliente.' - '.$cliente->num_cpf.'</li>';
       }
       echo '</ul>';
+    } else {
+      echo '<span>Nenhum cliente cadastrado</span>';
     }
   }
 

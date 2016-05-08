@@ -79,8 +79,13 @@ class ClienteDAO {
 
     public function listar($ordem = NULL) {
       try {
-        $this->stmt = $this->conn->prepare("select * from cliente order by nom_cliente $ordem");
-        $this->stmt->execute();
+          if(isset($ordem)){
+            $sql = "select * from cliente order by nom_cliente ".$ordem;
+          } else {
+            $sql = "select * from cliente";
+          }
+          $this->stmt = $this->conn->prepare($sql);
+          $this->stmt->execute();
 
         return $this->stmt->fetchAll(PDO::FETCH_CLASS);
       } catch (Exception $e) {

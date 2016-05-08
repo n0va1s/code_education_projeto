@@ -46,4 +46,16 @@ insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Mulher Maravilha','P
 insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Capitão América','PHP','9.9');
 insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Viúva Negra','PHP','8.6');
 insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Arqueiro','PHP','7.1');
-insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Professor Xavier','PHP','10'); 
+insert into aluno(nom_aluno, nom_modulo, val_nota) values ('Professor Xavier','PHP','10');
+
+#Cliente
+insert into cliente(nom_cliente,eml_cliente,num_cpf,des_endereco) values ('Cliente_A','cliente_A@gmail.com','11111111111','Endereço do cliente_A');
+insert into cliente(nom_cliente,eml_cliente,num_cpf,des_endereco) values ('Cliente_B','cliente_B@gmail.com','22222222222','Endereço do cliente_B');
+insert into cliente(nom_cliente,eml_cliente,num_cpf,des_endereco) values ('Cliente_C','cliente_C@gmail.com','33333333333','Endereço do cliente_C');
+insert into cliente(nom_cliente,eml_cliente,num_cpf,des_endereco) values ('Cliente_D','cliente_D@gmail.com','44444444444','Endereço do cliente_D');
+insert into cliente(nom_cliente,eml_cliente,num_cpf,des_endereco) values ('Cliente_E','cliente_E@gmail.com','55555555555','Endereço do cliente_E');
+insert into cliente(nom_cliente,eml_cliente,num_cpf,des_endereco) values ('Cliente_F','cliente_F@gmail.com','66666666666','Endereço do cliente_F');
+insert into cliente(nom_cliente,eml_cliente,num_cpf,des_endereco) values ('Cliente_G','cliente_G@gmail.com','77777777777','Endereço do cliente_G');
+insert into cliente(nom_cliente,eml_cliente,num_cpf,des_endereco) values ('Cliente_H','cliente_H@gmail.com','88888888888','Endereço do cliente_H');
+insert into cliente(nom_cliente,eml_cliente,num_cpf,des_endereco) values ('Cliente_I','cliente_I@gmail.com','99999999999','Endereço do cliente_I');
+insert into cliente(nom_cliente,eml_cliente,num_cpf,des_endereco) values ('Cliente_J','cliente_J@gmail.com','00000000000','Endereço do cliente_J');

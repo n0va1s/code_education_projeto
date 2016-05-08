@@ -105,7 +105,10 @@ $ctr = new $c;
 
 //Como todas a requisicoes sao direcionadas para index.php os dados da
 //requisicao precisam ser encaminhados para o metodo especifico da controladora
-$dados = !empty($id) ? $id : $_REQUEST;
-
+if(!empty($_REQUEST)){
+  $dados = $_REQUEST;
+} else {
+  $dados = $id;
+}
 //Execucao
 $ctr->$acao($dados);
