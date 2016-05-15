@@ -110,5 +110,6 @@ if(!empty($_REQUEST)){
 } else {
   $dados = $id;
 }
+
 //Execucao
 $ctr->$acao($dados);

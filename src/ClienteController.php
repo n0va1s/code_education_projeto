@@ -29,8 +29,11 @@ class ClienteController extends Controller{
     $this->model->setSeqCliente(isset($_POST["seq"]) ? $_POST["seq"] : "");
     $this->model->setNomCliente(isset($_POST["nome"]) ? $_POST["nome"] : "");
     $this->model->setEmlCliente(isset($_POST["email"]) ? $_POST["email"] : "");
-    $this->model->setNumCPF(isset($_POST["cpf"]) ? $_POST["cpf"] : "");
+    $this->model->setNumDocumento(isset($_POST["documento"]) ? $_POST["documento"] : "");
+    $this->model->setTipPessoa(isset($_POST["tipo"]) ? $_POST["tipo"] : "");
     $this->model->setDesEndereco(isset($_POST["endereco"]) ? $_POST["endereco"] : "");
+    $this->model->setEnderecoCobranca(isset($_POST["enderecocobranca"]) ? $_POST["enderecocobranca"] : "");
+
     $sucesso = $this->model->gravar($this->model);
 
     if($sucesso){

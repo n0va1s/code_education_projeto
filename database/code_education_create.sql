@@ -34,11 +34,13 @@ COMMENT = 'Relaciona os usuarios com acesso a area restrita';
 
 CREATE TABLE IF NOT EXISTS cliente (
 seq_cliente INT(6) AUTO_INCREMENT
-,tip_cliente CHAR(1) NOT NULL DEFAULT 'B' COMMENT 'B - bronze - ate 10 compras, P - prata - ate 20 compras, O - ouro - ate 30 comrpas, D - diamante - mais de 30 compras'
+,tip_cliente CHAR(1) NOT NULL DEFAULT '1' COMMENT '1 estrela - ate 10 compras, 2 estrelas - ate 20 compras, 3 estrelas - ate 30 comrpas, 5 estrelas - mais de 30 compras'
 ,nom_cliente VARCHAR(50) COMMENT 'Nome do cliente'
 ,eml_cliente VARCHAR(50) COMMENT 'Email do cliente'
-,num_cpf CHAR(11) COMMENT 'Identificador unico do cliente'
+,tip_cliente CHAR(1) DEFAULT 'F' COMMENT 'F - fisica, J - juridica'
+,num_documento CHAR(25) COMMENT 'Identificador unico do cliente'
 ,des_endereco VARCHAR(80) COMMENT 'Endereco do responsavel pela crianca'
+,des_endereco_cobranca VARCHAR(80) COMMENT 'Endereco de cobranca da fatura mensal'
 ,dat_inativo DATE NOT NULL DEFAULT '0000-00-00' COMMENT 'Data em que o registro foi desativado'
 ,PRIMARY KEY(seq_cliente)
 )

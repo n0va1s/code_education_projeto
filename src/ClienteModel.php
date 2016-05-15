@@ -1,14 +1,19 @@
 <?php
 
+require_once "IRelacionamento.php";
 require_once "ClienteDAO.php";
 
-class ClienteModel {
+class ClienteModel implements IRelacionamento{
 
   private $seqCliente;
   private $nomCliente;
   private $emlCliente;
-  private $numCPF;
+  private $tipCliente;
+  private $NumDocumento;
   private $desEndereco;
+  private $qtdEstrelas;
+  private $enderecoCobranca;
+  private $tipPessoa;
 
   private $dao;
 
@@ -28,12 +33,24 @@ class ClienteModel {
     $this->emlCliente = $emlCliente;
   }
 
-  public function setNumCPF($numCPF){
-    $this->numCPF = $numCPF;
+  public function setNumDocumento($numDocumento){
+    $this->numDocumento = $numDocumento;
   }
 
   public function setDesEndereco($desEndereco){
     $this->desEndereco = $desEndereco;
+  }
+
+  public function setEnderecoCobranca($enderecoCobranca){
+    $this->enderecoCobranca = $enderecoCobranca;
+  }
+
+  public function setTipCliente($tipCliente){
+    $this->tipCliente = $tipCliente;
+  }
+
+  public function setTipPessoa($tipPessoa){
+    $this->tipPessoa = $tipPessoa;
   }
 
   public function getSeqCliente(){
@@ -48,12 +65,24 @@ class ClienteModel {
     return $this->emlCliente;
   }
 
-  public function getNumCPF(){
-    return $this->numCPF;
+  public function getNumDocumento(){
+    return $this->numDocumento;
   }
 
   public function getDesEndereco(){
     return $this->desEndereco;
+  }
+
+  public function getEnderecoCobranca(){
+    return $this->enderecoCobranca;
+  }
+
+  public function getTipCliente(){
+    return $this->tipCliente;
+  }
+
+  public function getTipPessoa(){
+    return $this->tipPessoa;
   }
 
   public function gravar(){
@@ -72,6 +101,10 @@ class ClienteModel {
 
   public function listar($ordem = NULL){
     return $this->dao->listar($ordem);
+  }
+
+  public function setClassificacao($qtdEstrelas){
+    return $this->qtdEstrelas = $qtdEstrelas;
   }
 
   public function __destruct(){

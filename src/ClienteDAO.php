@@ -14,17 +14,23 @@ class ClienteDAO {
       try {
         $stmt = $this->conn->prepare("insert into cliente (nom_cliente,
                                                            eml_cliente,
-                                                           num_cpf,
-                                                           des_endereco)
+                                                           num_documento,
+                                                           tip_pessoa,
+                                                           des_endereco,
+                                                           des_endereco_cobranca)
                                                    values (:nom_cliente,
                                                            :eml_cliente,
-                                                           :num_cpf,
-                                                           :des_endereco)");
+                                                           :num_documento,
+                                                           :tip_pessoa,
+                                                           :des_endereco,
+                                                           :des_endereco_cobranca)");
 
         $stmt->bindValue(":nom_cliente", $model->getNomCliente());
         $stmt->bindValue(":eml_cliente", $model->getEmlCliente());
-        $stmt->bindValue(":num_cpf", $model->getNumCPF());
+        $stmt->bindValue(":num_documento", $model->getNumDocumento());
+        $stmt->bindValue(":tip_pessoa", $model->getTipPessoa());
         $stmt->bindValue(":des_endereco", $model->getDesEndereco());
+        $stmt->bindValue(":des_endereco_cobranca", $model->getEnderecoCobranca());
         //Debug
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
@@ -40,15 +46,18 @@ class ClienteDAO {
       try {
         $stmt = $this->conn->prepare("update cliente set nom_cliente = :nom_cliente,
                                                          eml_cliente = :eml_cliente,
-                                                         num_cpf = :num_cpf,
-                                                         des_endereco = :des_endereco
+                                                         num_documento = :num_documento,
+                                                         tip_pessoa = :tip_pessoa,
+                                                         des_endereco = :des_endereco,
+                                                         des_endereco_cobranca = :des_endereco_cobranca
                                      where seq_cliente = :seq_cliente");
 
-         $stmt->bindValue(":nom_cliente", $model->getNomCliente());
-         $stmt->bindValue(":eml_cliente", $model->getEmlCliente());
-         $stmt->bindValue(":tip_parentesco", $model->getNumCPF());
-         $stmt->bindValue(":nom_filho", $model->getDesEndereco());
-         $stmt->bindValue(":seq_cliente", $model->getSeqCliente());
+        $stmt->bindValue(":nom_cliente", $model->getNomCliente());
+        $stmt->bindValue(":eml_cliente", $model->getEmlCliente());
+        $stmt->bindValue(":num_documento", $model->getNumDocumento());
+        $stmt->bindValue(":tip_pessoa", $model->getTipPessoa());
+        $stmt->bindValue(":des_endereco", $model->getDesEndereco());
+        $stmt->bindValue(":des_endereco_cobranca", $model->getEnderecoCobranca());
         //Debug
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
@@ -79,7 +88,7 @@ class ClienteDAO {
 
     public function listar($ordem = NULL) {
       try {
-          if(isset($ordem)){
+          if(!empty($ordem)){
             $sql = "select * from cliente order by nom_cliente ".$ordem;
           } else {
             $sql = "select * from cliente";
