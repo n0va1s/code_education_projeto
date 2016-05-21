@@ -1,6 +1,5 @@
 <?php
-
-require_once "UsuarioDAO.php";
+namespace codeeduc\usuario;
 
 class UsuarioModel {
 
@@ -55,9 +54,8 @@ class UsuarioModel {
   }
 
   public function autenticar($model){
-    if(!isset($_SESSION['logado'])){
-        $sucesso = $this->dao->validarCredenciais($model);
-      session_start();
+    if(!isset($_SESSION["logado"]) && empty($_SESSION["logado"])){
+      $sucesso = $this->dao->validarCredenciais($model);
       if($sucesso){
         $_SESSION['logado'] = 1;
         return true;

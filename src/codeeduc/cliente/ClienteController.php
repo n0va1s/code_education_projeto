@@ -1,7 +1,6 @@
 <?php
-
-require_once "ClienteModel.php";
-require_once "ClienteView.php";
+namespace codeeduc\cliente;
+use codeeduc\Controller;
 
 class ClienteController extends Controller{
 

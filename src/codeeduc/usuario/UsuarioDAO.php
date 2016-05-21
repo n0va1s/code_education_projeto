@@ -1,13 +1,13 @@
 <?php
-
-require_once 'Conexao.php';
+namespace codeeduc\usuario;
+use codeeduc\util\Conexao;
 
 class UsuarioDAO {
-
+    
     private $conn;
 
     function __construct() {
-        $this->conn = Conexao::conectar();
+      $this->conn = Conexao::conectar();
     }
 
     public function inserir(UsuarioModel $model) {
@@ -32,7 +32,7 @@ class UsuarioDAO {
 
     public function validarCredenciais(UsuarioModel $model) {
       try {
-        $stmt = $this->conn->prepare("select * 
+        $stmt = $this->conn->prepare("select *
                                         from usuario
                                       where nom_usuario = :nom_usuario
                                         and val_senha = :val_senha");

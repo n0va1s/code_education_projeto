@@ -1,6 +1,6 @@
 <?php
-
-require_once "View.php";
+namespace codeeduc\cliente;
+use codeeduc\View;
 
 class ClienteView extends View{
 

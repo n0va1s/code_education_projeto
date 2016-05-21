@@ -1,4 +1,6 @@
 <?php
+namespace codeeduc\util;
+
 return array(
 	'db' => array(
 		'SGBD' => 'mysql',

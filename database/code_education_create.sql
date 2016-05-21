@@ -37,7 +37,7 @@ seq_cliente INT(6) AUTO_INCREMENT
 ,tip_cliente CHAR(1) NOT NULL DEFAULT '1' COMMENT '1 estrela - ate 10 compras, 2 estrelas - ate 20 compras, 3 estrelas - ate 30 comrpas, 5 estrelas - mais de 30 compras'
 ,nom_cliente VARCHAR(50) COMMENT 'Nome do cliente'
 ,eml_cliente VARCHAR(50) COMMENT 'Email do cliente'
-,tip_cliente CHAR(1) DEFAULT 'F' COMMENT 'F - fisica, J - juridica'
+,tip_pessoa CHAR(1) DEFAULT 'F' COMMENT 'F - fisica, J - juridica'
 ,num_documento CHAR(25) COMMENT 'Identificador unico do cliente'
 ,des_endereco VARCHAR(80) COMMENT 'Endereco do responsavel pela crianca'
 ,des_endereco_cobranca VARCHAR(80) COMMENT 'Endereco de cobranca da fatura mensal'

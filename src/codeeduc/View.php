@@ -1,13 +1,12 @@
 <?php
+namespace codeeduc;
 
-Class View
-{
+Class View{
 
-  public function render($pagina) {
+  public function render($pagina, $dados = NULL) {
     require_once "./assets/".$pagina.".php";
   }
 
-  
   public function exibirNaoLogado($mensagem = NULL){
     if(isset($mensagem)){
       echo $mensagem;
@@ -15,7 +14,6 @@ Class View
       echo "Faça login para acessar esta funcionalidade";
     }
   }
-
 
   public function exibirSucesso($mensagem = NULL){
     if(isset($mensagem)){

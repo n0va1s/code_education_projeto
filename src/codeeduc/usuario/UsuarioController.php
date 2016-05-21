@@ -1,7 +1,6 @@
 <?php
-
-require_once "UsuarioModel.php";
-require_once "UsuarioView.php";
+namespace codeeduc\usuario;
+use codeeduc\Controller;
 
 class UsuarioController extends Controller{
 

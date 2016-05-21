@@ -1,6 +1,6 @@
 <?php
-
-require_once 'Conexao.php';
+namespace codeeduc\conteudo;
+use codeeduc\util\Conexao;
 
 class ConteudoDAO {
 

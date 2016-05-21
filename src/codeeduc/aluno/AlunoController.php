@@ -1,7 +1,6 @@
 <?php
-
-require_once "AlunoModel.php";
-require_once "AlunoView.php";
+namespace codeeduc\aluno;
+use codeeduc\Controller;
 
 class AlunoController extends Controller{
 

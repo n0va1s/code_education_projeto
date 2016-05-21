@@ -1,10 +1,11 @@
 <?php
+namespace codeeduc\util;
 
 class Conexao {
 
-    static $conn;
+    private $conn;
 
-    static function conectar() {
+    final static function conectar() {
       $config = include "Configuracao.php";
 
       if(!isset($config['db'])){
@@ -13,9 +14,9 @@ class Conexao {
         $DSN = $config['db']['SGBD'].":host=".$config['db']['host'].";dbname=".$config['db']['dbname'].";charset=".$config['db']['charset'].";";
         $opcoes = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8');
         try {
-            $conn = new PDO($DSN, $config['db']['user'], $config['db']['password'], $opcoes);
-            $conn->setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-            return $conn;
+            $this->conn = new PDO($DSN, $config['db']['user'], $config['db']['password'], $opcoes);
+            $this->conn->setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+            return $this->conn;
         } catch (PDOException $e) {
             echo "Erro na conexão!";
             echo $e->getMessage();
@@ -23,11 +24,11 @@ class Conexao {
       }
     }
 
-    static function getConexao() {
-        return Conexao::$conn;
+    final static function getConexao() {
+        return $this->conn;
     }
 
-    static function desconectar(){
-        Conexao::$conn = NULL;
+    final static function desconectar(){
+        unset($this->conn);
     }
 }

@@ -1,6 +1,6 @@
 <?php
-
-require_once "View.php";
+namespace codeeduc\conteudo;
+use codeeduc\View;
 
 class ConteudoView extends View{
 

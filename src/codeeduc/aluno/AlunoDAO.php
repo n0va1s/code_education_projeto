@@ -1,6 +1,6 @@
 <?php
-
-require_once 'Conexao.php';
+namespace codeeduc\aluno;
+use codeeduc\util\Conexao;
 
 class AlunoDAO {
 

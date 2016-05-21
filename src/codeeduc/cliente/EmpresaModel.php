@@ -1,6 +1,5 @@
 <?php
-
-require "IRelacionamento.php";
+namespace codeeduc\cliente;
 
 class EmpresaModel implements IRelacionamento{
 

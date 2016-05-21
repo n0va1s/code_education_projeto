@@ -5,11 +5,6 @@
     <button class="btn btn-primary pull-right" type="submit" id="btnSearch" name="btnSearch"><span class="glyphicon glyphicon-search"></span></button>
   </form>
   -->
-  <?php
-  require_once "./src/ConteudoView.php";
-  $view = new ConteudoView();
-  echo $view->exibirPesquisa();
-  ?>
   <h1>Oh Happy Day (day care)</h1>
   <p>O que queremos para os nossos filhos, queremos também para o seu!</p>
 </div>

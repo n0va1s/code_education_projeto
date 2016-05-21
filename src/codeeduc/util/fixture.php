@@ -1,7 +1,8 @@
 <?php
-require_once "Conexao.php";
-require_once "UsuarioModel.php";
-require_once "UsuarioDAO.php";
+namespace codeeduc\util;
+use codeeduc\usuario\UsuarioModel;
+use codeeduc\usuario\UsuarioDAO;
+
 echo "Mudando para a pasta dos scripts de banco<br>";
 chdir('../database/');
 echo getcwd()."<br>";

@@ -1,7 +1,5 @@
 <?php
-
-require_once "IRelacionamento.php";
-require_once "ClienteDAO.php";
+namespace codeeduc\cliente;
 
 class ClienteModel implements IRelacionamento{
 

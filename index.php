@@ -63,26 +63,29 @@
 
 $url = parse_url("http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
 $separator = explode('/',$url['path']);
-//Modulo
+//Modulo da aplicacao
 if(!empty(ucfirst($separator[1]))){
-  //Determinar o modulo a ser executado. Nao sendo informado, direciona para a pagina principal
+  //Muda o diretorio
   $modulo = ucfirst($separator[1]);
 } else {
   $modulo = "Inicio";
 }
-//Acao
+//Acao a ser executada pela controladora
 if(!empty($separator[2])){
-  //Caso na URL so exista o modulo direcionar para action index
   $acao = $separator[2];
-} else {
+} else {//Caso na URL so exista o modulo direcionar para action iniciar
   $acao = "iniciar";
 }
 //Id
 if(!empty($separator[3])) {
-  //Caso seja informado o ID para pesquisa ou alteracao
+  //Caso seja informado o ID de um registro especifico
   $id = $separator[3];
 } else {
   $id = NULL;
+}
+
+if (!isset($_SESSION)){
+   session_start();
 }
 
 //Lista de opcoes possivel no menu
@@ -90,18 +93,35 @@ $menu = array("Inicio","Mensagem","Aluno","Cliente","Conteudo","Painel");
 if(!in_array($modulo, $menu)){
   http_response_code(404);
 }
-if (!file_exists(__DIR__."/src/".$modulo."Controller.php")) {
+if (!file_exists(__DIR__."/src/{$modulo}/{$modulo}Controller.php")) {
   http_response_code(501);
 }
 
-//Require
-require_once 'src/Controller.php';
-require_once 'src/Configuracao.php';
-require_once 'src/'.$modulo.'Controller.php';
+//Namespace
+define('CLASS_DIR','src/');
+set_include_path(get_include_path().PATH_SEPARATOR.CLASS_DIR);
+spl_autoload_register();
+
+require_once 'src/codeeduc/Controller.php';
+require_once 'src/codeeduc/View.php';
+$path = "src/codeeduc/".strtolower($modulo)."/".$modulo;
+if(file_exists($path."Controller.php")){
+  require_once "{$path}Controller.php";
+}
+if(file_exists($path."View.php")){
+  require_once "{$path}View.php";
+}
+if(file_exists($path."Model.php")){
+  require_once "{$path}Model.php";
+}
+if(file_exists($path."DAO.php")){
+  require_once "{$path}DAO.php";
+}
+$namespaceClass = "\\codeeduc\\{$modulo}\\".$modulo."Controller";
+$item = new $namespaceClass;
 
 //Instanciacao das classes
-$c = $modulo.'Controller';
-$ctr = new $c;
+$ctr = new $item;
 
 //Como todas a requisicoes sao direcionadas para index.php os dados da
 //requisicao precisam ser encaminhados para o metodo especifico da controladora

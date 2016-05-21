@@ -1,7 +1,6 @@
 <?php
-
-require_once "ConteudoModel.php";
-require_once "ConteudoView.php";
+namespace codeeduc\conteudo;
+use codeeduc\Controller;
 
 class ConteudoController extends Controller{
 

@@ -1,6 +1,5 @@
 <?php
-
-require_once "AlunoDAO.php";
+namespace codeeduc\aluno;
 
 class AlunoModel {
 

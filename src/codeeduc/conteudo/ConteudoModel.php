@@ -1,6 +1,5 @@
 <?php
-
-require_once "ConteudoDAO.php";
+namespace codeeduc\conteudo;
 
 class ConteudoModel {
 

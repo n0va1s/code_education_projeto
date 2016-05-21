@@ -1,6 +1,6 @@
 <?php
-
-require_once "InicioView.php";
+namespace codeeduc\inicio;
+use codeeduc\Controller;
 
 class InicioController extends Controller{
 
