@@ -102,7 +102,7 @@ class AlunoDAO {
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS);
+        return $stmt->fetchAll(\PDO::FETCH_CLASS);
        } catch (Exception $e) {
          echo "Erro ao pesquiar o aluno ".$e->getCode()." Mensagem: ".$e->getMessage();
        }
@@ -118,7 +118,7 @@ class AlunoDAO {
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
       } catch (Exception $e) {
         echo "Erro ao consultar o aluno. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
       }
@@ -132,7 +132,7 @@ class AlunoDAO {
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS);
+        return $stmt->fetchAll(\PDO::FETCH_CLASS);
       } catch (Exception $e) {
         echo "Erro ao listar os alunos. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
       }
@@ -148,7 +148,7 @@ class AlunoDAO {
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS);
+        return $stmt->fetchAll(\PDO::FETCH_CLASS);
       } catch (Exception $e) {
         echo "Erro ao listar os alunos destaques. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
       }

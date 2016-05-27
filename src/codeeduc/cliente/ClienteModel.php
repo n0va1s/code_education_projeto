@@ -1,5 +1,7 @@
 <?php
 namespace codeeduc\cliente;
+use codeeduc\cliente\ClienteDAO;
+use codeeduc\cliente\IRelacionamento;
 
 class ClienteModel implements IRelacionamento{
 

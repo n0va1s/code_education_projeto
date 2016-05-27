@@ -96,7 +96,7 @@ class ClienteDAO {
           $this->stmt = $this->conn->prepare($sql);
           $this->stmt->execute();
 
-        return $this->stmt->fetchAll(PDO::FETCH_CLASS);
+        return $this->stmt->fetchAll(\PDO::FETCH_CLASS);
       } catch (Exception $e) {
         echo "Erro ao listar os clientes. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
       }

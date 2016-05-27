@@ -1,4 +1,6 @@
 <?php
+require_once "src/codeeduc/util/Carregador.php";
+use codeeduc\util\Carregador;
 
   //PHP < 5.4
   if (!function_exists('http_response_code')) {
@@ -84,6 +86,7 @@ if(!empty($separator[3])) {
   $id = NULL;
 }
 
+//Iniciando a sessao para colocar informacoes apos o login
 if (!isset($_SESSION)){
    session_start();
 }
@@ -93,34 +96,36 @@ $menu = array("Inicio","Mensagem","Aluno","Cliente","Conteudo","Painel");
 if(!in_array($modulo, $menu)){
   http_response_code(404);
 }
-if (!file_exists(__DIR__."/src/{$modulo}/{$modulo}Controller.php")) {
-  http_response_code(501);
-}
 
-//Namespace
 define('CLASS_DIR','src/');
 set_include_path(get_include_path().PATH_SEPARATOR.CLASS_DIR);
 spl_autoload_register();
 
 require_once 'src/codeeduc/Controller.php';
 require_once 'src/codeeduc/View.php';
-$path = "src/codeeduc/".strtolower($modulo)."/".$modulo;
-if(file_exists($path."Controller.php")){
-  require_once "{$path}Controller.php";
-}
-if(file_exists($path."View.php")){
-  require_once "{$path}View.php";
-}
-if(file_exists($path."Model.php")){
-  require_once "{$path}Model.php";
-}
-if(file_exists($path."DAO.php")){
-  require_once "{$path}DAO.php";
-}
-$namespaceClass = "\\codeeduc\\{$modulo}\\".$modulo."Controller";
-$item = new $namespaceClass;
+require_once 'src/codeeduc/util/Conexao.php';
 
-//Instanciacao das classes
+if($modulo == 'Cliente'){
+  require_once 'src/codeeduc/cliente/IRelacionamento.php';
+  require_once 'src/codeeduc/cliente/EmpresaModel.php';
+}
+
+if(file_exists("src/codeeduc/".strtolower($modulo)."/{$modulo}Controller.php")){
+    require_once "src/codeeduc/".strtolower($modulo)."/{$modulo}Controller.php";
+}
+if(file_exists("src/codeeduc/".strtolower($modulo)."/{$modulo}View.php")){
+    require_once "src/codeeduc/".strtolower($modulo)."/{$modulo}View.php";
+}
+if(file_exists("src/codeeduc/".strtolower($modulo)."/{$modulo}Model.php")){
+  require_once "src/codeeduc/".strtolower($modulo)."/{$modulo}Model.php";
+}
+if(file_exists("src/codeeduc/".strtolower($modulo)."/{$modulo}DAO.php")){
+  require_once "src/codeeduc/".strtolower($modulo)."/{$modulo}DAO.php";
+}
+
+//Instanciar o objeto que chama a acao da controladora do modulo em questao
+$namespaceClass = "codeeduc\\".strtolower($modulo)."\\{$modulo}Controller";
+$item = new $namespaceClass;
 $ctr = new $item;
 
 //Como todas a requisicoes sao direcionadas para index.php os dados da

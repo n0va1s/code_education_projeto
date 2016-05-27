@@ -56,14 +56,14 @@ class ConteudoDAO {
         $np = "%".$model->getNomPagina()."%";
         $tp = "%".$model->getTxtPagina()."%";
 
-        $stmt->bindValue(":nom_pagina", $np, PDO::PARAM_STR);
-        $stmt->bindValue(":txt_pagina", $tp, PDO::PARAM_STR);
+        $stmt->bindValue(":nom_pagina", $np, \PDO::PARAM_STR);
+        $stmt->bindValue(":txt_pagina", $tp, \PDO::PARAM_STR);
 
         //Debug
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS);
+        return $stmt->fetchAll(\PDO::FETCH_CLASS);
       } catch (Exception $e) {
         echo "Erro ao consultar as paginas pelos textos. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
       }
@@ -75,13 +75,13 @@ class ConteudoDAO {
                                         from conteudo
                                       where seq_conteudo = :seq_conteudo");
 
-        $stmt->bindValue(":seq_conteudo", $model->getSeqConteudo(), PDO::PARAM_INT);
+        $stmt->bindValue(":seq_conteudo", $model->getSeqConteudo(), \PDO::PARAM_INT);
 
         //Debug
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        return $stmt->fetch(\PDO::FETCH_OBJ);
       } catch (Exception $e) {
         echo "Erro ao consultar pagina pelo sequencial. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
       }
@@ -96,7 +96,7 @@ class ConteudoDAO {
         //echo $stmt->debugDumpParams();
         //var_dump($stmt->errorInfo());
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS);
+        return $stmt->fetchAll(\PDO::FETCH_CLASS);
       } catch (Exception $e) {
         echo "Erro ao listar as paginas cadastradas. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
       }
