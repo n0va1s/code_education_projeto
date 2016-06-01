@@ -1,15 +1,17 @@
 <?php
 namespace codeeduc\cliente;
 use codeeduc\Controller;
+use codeeduc\cliente\ClienteModel;
+use codeeduc\cliente\ClienteView;
 
 class ClienteController extends Controller{
 
   private $model;
   private $view;
 
-  public function __construct(){
-    $this->model = new ClienteModel();
-    $this->view = new ClienteView();
+  public function __construct(ClienteView $view, ClienteModel $model){
+    $this->model = $model;
+    $this->view = $view;
   }
 
   public function iniciar($ordem = NULL){

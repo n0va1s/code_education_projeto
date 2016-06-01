@@ -1,5 +1,6 @@
 <?php
 namespace codeeduc\conteudo;
+use codeeduc\conteudo\ConteudoDAO;
 
 class ConteudoModel {
 
@@ -10,8 +11,8 @@ class ConteudoModel {
 
   private $dao;
 
-  public function __construct(){
-    $this->dao = new ConteudoDAO();
+  public function __construct(ConteudoDAO $dao){
+    $this->dao = $dao;
   }
 
   public function setSeqConteudo($seqConteudo){

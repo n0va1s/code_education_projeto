@@ -1,14 +1,16 @@
 <?php
 namespace codeeduc\usuario;
 use codeeduc\Controller;
+use codeeduc\View;
+use codeeduc\usuario\UsuarioModel;
 
 class UsuarioController extends Controller{
 
   private $model;
 
-  public function __construct(){
-    $this->model = new UsuarioModel();
-    $this->view = new UsuarioView();
+  public function __construct(View $view,UsuarioModel $model){
+    $this->model = $model;
+    $this->view = $view;
   }
 
   public function logar(){

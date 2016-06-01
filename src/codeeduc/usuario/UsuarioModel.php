@@ -1,5 +1,6 @@
 <?php
 namespace codeeduc\usuario;
+use codeeduc\usuario\UsuarioDAO;
 
 class UsuarioModel {
 
@@ -10,8 +11,8 @@ class UsuarioModel {
 
   private $dao;
 
-  public function __construct(){
-    $this->dao = new UsuarioDAO();
+  public function __construct(UsuarioDAO $dao){
+    $this->dao = $dao;
   }
 
   public function setSeqUsuario($seqUsuario){

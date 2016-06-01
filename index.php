@@ -110,23 +110,38 @@ if($modulo == 'Cliente'){
   require_once 'src/codeeduc/cliente/EmpresaModel.php';
 }
 
-if(file_exists("src/codeeduc/".strtolower($modulo)."/{$modulo}Controller.php")){
-    require_once "src/codeeduc/".strtolower($modulo)."/{$modulo}Controller.php";
-}
+//Os objetos MVC e DAO sao criados em um ponto unico para
+//diminuir o acomplamento entre as classes
 if(file_exists("src/codeeduc/".strtolower($modulo)."/{$modulo}View.php")){
-    require_once "src/codeeduc/".strtolower($modulo)."/{$modulo}View.php";
-}
-if(file_exists("src/codeeduc/".strtolower($modulo)."/{$modulo}Model.php")){
-  require_once "src/codeeduc/".strtolower($modulo)."/{$modulo}Model.php";
+  require_once "src/codeeduc/".strtolower($modulo)."/{$modulo}View.php";
+  $namespaceClass = "codeeduc\\".strtolower($modulo)."\\{$modulo}View";
+  $v = new $namespaceClass;
+} else {
+  require_once "src/codeeduc/View.php";
+  $namespaceClass = "codeeduc\\View";
+  $v = new $namespaceClass;
 }
 if(file_exists("src/codeeduc/".strtolower($modulo)."/{$modulo}DAO.php")){
   require_once "src/codeeduc/".strtolower($modulo)."/{$modulo}DAO.php";
+  $namespaceClass = "codeeduc\\".strtolower($modulo)."\\{$modulo}DAO";
+  $d = new $namespaceClass;
 }
-
-//Instanciar o objeto que chama a acao da controladora do modulo em questao
-$namespaceClass = "codeeduc\\".strtolower($modulo)."\\{$modulo}Controller";
-$item = new $namespaceClass;
-$ctr = new $item;
+if(file_exists("src/codeeduc/".strtolower($modulo)."/{$modulo}Model.php")){
+  require_once "src/codeeduc/".strtolower($modulo)."/{$modulo}Model.php";
+  $namespaceClass = "codeeduc\\".strtolower($modulo)."\\{$modulo}Model";
+  $m = new $namespaceClass($d);
+}
+if(file_exists("src/codeeduc/".strtolower($modulo)."/{$modulo}Controller.php")){
+  require_once "src/codeeduc/".strtolower($modulo)."/{$modulo}Controller.php";
+  $namespaceClass = "codeeduc\\".strtolower($modulo)."\\{$modulo}Controller";
+  //A index.php nao possui model por isso essa regra para
+  //instaciar uma controller somente com uma view
+  if(isset($m)){
+    $c = new $namespaceClass($v, $m);
+  } else {
+    $c = new $namespaceClass($v);
+  }
+}
 
 //Como todas a requisicoes sao direcionadas para index.php os dados da
 //requisicao precisam ser encaminhados para o metodo especifico da controladora
@@ -136,5 +151,6 @@ if(!empty($_REQUEST)){
   $dados = $id;
 }
 
-//Execucao
-$ctr->$acao($dados);
+//Como todas as acoes sao direcionadas para a index
+//a controladora vai executar a acao informada na URL
+$c->$acao($dados);

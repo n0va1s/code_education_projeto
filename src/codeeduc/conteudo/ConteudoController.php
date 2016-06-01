@@ -1,12 +1,14 @@
 <?php
 namespace codeeduc\conteudo;
 use codeeduc\Controller;
+use codeeduc\conteudo\ConteudoModel;
+use codeeduc\conteudo\ConteudoView;
 
 class ConteudoController extends Controller{
 
-  public function __construct(){
-    $this->model = new ConteudoModel();
-    $this->view = new ConteudoView();
+  public function __construct(ConteudoView $view,ConteudoModel $model){
+    $this->model = $model;
+    $this->view = $view;
   }
 
   public function iniciar(){

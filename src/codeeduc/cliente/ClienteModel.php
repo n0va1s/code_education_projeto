@@ -17,8 +17,8 @@ class ClienteModel implements IRelacionamento{
 
   private $dao;
 
-  public function __construct(){
-    $this->dao = new ClienteDAO();
+  public function __construct(ClienteDAO $dao){
+    $this->dao = $dao;
   }
 
   public function setSeqCliente($seqCliente){
