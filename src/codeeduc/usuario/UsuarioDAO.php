@@ -40,7 +40,7 @@ class UsuarioDAO {
         $stmt->bindValue(":nom_usuario", $model->getNomUsuario());
         $stmt->bindValue(":val_senha", password_hash($model->getValSenha(), PASSWORD_DEFAULT));
         //password_verify(senha, hash);
-
+var_dump($model);
         return $stmt->execute();
       } catch (Exception $e) {
         echo "Nao foi possivel autenticar no banco de dados. Codigo: ".$e->getCode()." Mensagem: ".$e->getMessage();
